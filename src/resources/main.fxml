@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="MainController">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="5">
+        <TextField fx:id="nameField" promptText="Имя"/>
+        <TextField fx:id="hexField" promptText="HEX"/>
+        <TextField fx:id="offsetField" promptText="Offset (-1 = любой)"/>
+        <Button text="Добавить" onAction="#addSignature"/>
+    </HBox>
+
+    <HBox spacing="5">
+        <TextField fx:id="pathField" promptText="Путь поиска"/>
+        <Button text="Папка" onAction="#chooseFolder"/>
+        <Button text="Поиск" onAction="#startSearch"/>
+    </HBox>
+
+    <TableView fx:id="table">
+        <columns>
+            <TableColumn fx:id="fileColumn" text="Файл"/>
+            <TableColumn fx:id="sigColumn" text="Сигнатура"/>
+            <TableColumn fx:id="offsetColumn" text="Offset"/>
+            <TableColumn fx:id="sizeColumn" text="Размер (байт)"/>
+            <TableColumn fx:id="createdColumn" text="Создан"/>
+            <TableColumn fx:id="modifiedColumn" text="Изменен"/>
+        </columns>
+    </TableView>
+</VBox>
