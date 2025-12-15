@@ -33,17 +33,35 @@ public class MainController {
                 data.getValue().getModified()));
     }
     @FXML
-    public void addSignature(){
-        long offset = Long.parseLong(offsetField.getText());
-        signatures.add(new Signature(
-                nameField.getText(),
-                Signature.fromHex(hexField.getText()), // <-- здесь
-                offset
-        ));
+    public void addSignature() {
+        String name = nameField.getText();
+        String hexText = hexField.getText();
+        String offsetText = offsetField.getText();
+
+        long offset;
+        try {
+            offset = Long.parseLong(offsetText);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка: Offset должен быть числом!");
+            return;
+        }
+
+        byte[] bytes;
+        try {
+            bytes = Signature.fromHex(hexText);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка: HEX должен состоять только из символов 0-9, A-F и быть чётной длины!");
+            return;
+        }
+
+        signatures.add(new Signature(name, bytes, offset));
+
         nameField.clear();
         hexField.clear();
         offsetField.clear();
     }
+
+
 
 
     @FXML

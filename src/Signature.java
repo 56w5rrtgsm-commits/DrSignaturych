@@ -1,7 +1,7 @@
 public class Signature {
     private final String name;
     private final byte[] bytes;
-    private final long offset; // -1 = любой offset
+    private final long offset;
 
     public Signature(String name, byte[] bytes, long offset) {
         this.name = name;

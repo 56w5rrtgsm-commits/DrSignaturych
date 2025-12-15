@@ -41,7 +41,7 @@ public class Scanner {
             if(raf.length()<2) return;
             byte[] mz = new byte[2];
             raf.readFully(mz);
-            if(mz[0]!='M'||mz[1]!='Z') return; // проверка MZ
+            if(mz[0]!='M'||mz[1]!='Z') return;
 
             for(Signature sig: signatures){
                 if(sig.getOffset()>=0){
